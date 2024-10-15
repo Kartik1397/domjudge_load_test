@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { SharedArray } from 'k6/data';
 
-let ip = "http://127.0.0.1:8080";
+let ip = "http://127.0.0.1:12345";
 
 const users = new SharedArray('users', function() {
     let data = open('users.csv');
@@ -15,9 +15,9 @@ const users = new SharedArray('users', function() {
 
 
 export let options = {
-    vus: 1000,
+    vus: 100,
     duration: '1m',  
-    rps: 2000,  
+    rps: 200,  
 };
 
 export default function () {
