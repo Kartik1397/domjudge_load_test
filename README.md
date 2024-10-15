@@ -1,5 +1,5 @@
 # k6 run
 
 ```
-k6 run --out json=output.json test.js
+K6_WEB_DASHBOARD=true k6 run --out json=output.json contest.js
 ```
