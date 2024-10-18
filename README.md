@@ -41,7 +41,7 @@ K6_WEB_DASHBOARD=true \
 ./k6 run submission.js -o xk6-influxdb
 ```
 
-# Load testing scripts
+## Load testing scripts
 
 - contest.js (Simulate user activity during contest)
 - login_10000.js (Simulte user login part)
