@@ -2,6 +2,12 @@
 
 Install k6 from: https://grafana.com/docs/k6/latest/set-up/install-k6/
 
+Install deps
+```
+npm install
+```
+
+Start k6
 ```
 K6_WEB_DASHBOARD=true k6 run contest.js
 ```
