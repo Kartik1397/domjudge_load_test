@@ -9,8 +9,9 @@ const c = open('bodies/test-hello.c', 'b');
 export const options = {
     stages: [
         { duration: '3s', target: 10 },
-        { duration: '30s', target: 10 },
-        { duration: '2m', target: 10 },
+        { duration: '30s', target: 20 },
+        { duration: '1m', target: 40 },
+        { duration: '10m', target: 40 },
     ],
     thresholds: {
         http_req_duration: ['p(95)<500'], // 95% of requests should be below 500ms
@@ -25,7 +26,7 @@ const headers = {
 
 // Helper functions
 function generateUser() {
-    return `gatling${randomString(5)}`;
+    return `gatling2${randomString(5)}`;
 }
 
 // User actions
