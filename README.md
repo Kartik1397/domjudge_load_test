@@ -9,7 +9,7 @@ npm install
 
 Start k6
 ```
-K6_WEB_DASHBOARD=true k6 run contest.js
+K6_WEB_DASHBOARD=true BASE_URL=https://test.indiaicpc.in k6 run contest.js
 ```
 
 ## InfluxDB Setup (optional)
