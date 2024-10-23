@@ -4,7 +4,8 @@ import { check, group, sleep } from 'k6';
 export const options = {
     stages: [
         { duration: '3s', target: 10 },
-        { duration: '10m', target: 10000 },
+        { duration: '2m', target: 5000 },
+        { duration: '10m', target: 5000 },
     ],
     thresholds: {
         http_req_duration: ['p(95)<1000'], // 95% of requests should be below 500ms
@@ -19,7 +20,7 @@ const headers = {
 
 // Helper functions
 function generateUser() {
-    return `gatling_reg_${Date.now() % 10000}`
+    return `gatling_reg_${Date.now() % 4000}`
 }
 
 // User actions

@@ -4,11 +4,13 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 const java = open('bodies/test-hello.java', 'b');
 const c = open('bodies/test-hello.c', 'b');
+const cpp = open('bodies/firework.cpp', 'cpp');
 
 export const options = {
     stages: [
         { duration: '1s', target: 1 },
-        { duration: '10m', target: 300 },
+        { duration: '1m', target: 500 },
+        { duration: '5m', target: 500 },
     ],
     thresholds: {
         http_req_duration: ['p(95)<1000'], // 95% of requests should be below 500ms
@@ -23,7 +25,7 @@ const headers = {
 
 // Helper functions
 function generateUser() {
-    return `gatling_reg_${Date.now() % 10000}`
+    return `gatling_reg_${Date.now() % 4000}`
 }
 
 // User actions
@@ -61,7 +63,7 @@ function login(username, password) {
 function submitSolution(langId, file) {
     const submitPage = http.get(`${BASE_URL}/team/submit`);
     const csrfToken = submitPage.html().find('input[name="submit_problem[_token]"]').attr('value');
-    const problemId = submitPage.body.match(/<option value="([^"]*)">A - /)[1];
+    const problemId = submitPage.body.match(/<option value="([^"]*)">E - /)[1];
 
     const fd = new FormData();
     fd.append('submit_problem[_token]', csrfToken);
@@ -90,8 +92,10 @@ export default function () {
 
     group('Submit solution simulation', function () {
         login(username, password);
-        submitSolution('c', c);
-        sleep(10);
+        sleep(60);
+        setInterval(() => {
+            submitSolution('cpp', cpp);
+        }, 60000);
     });
 }
 

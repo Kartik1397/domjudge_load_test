@@ -3,9 +3,9 @@ import { check, group, sleep } from 'k6';
 
 export const options = {
     stages: [
-        { duration: '3s', target: 10 },
-        { duration: '1m', target: 400 },
-        { duration: '10m', target: 400 },
+        { duration: '3s', target: 1 },
+        { duration: '1m', target: 100 },
+        { duration: '10m', target: 1000 },
     ],
     thresholds: {
         http_req_duration: ['p(95)<500'], // 95% of requests should be below 500ms
@@ -19,8 +19,9 @@ const headers = {
 };
 
 // Helper functions
-function generateUser() {
-    return `gatling_reg_${Date.now() % 10000}`;
+function generateUser(i) {
+//    return `gatling_reg_${i}`;
+    return `gatling_reg_${Math.ceil(Math.random() * 1000) % 4000}`;
 }
 
 function register(username, password) {
@@ -50,10 +51,9 @@ function register(username, password) {
 
 // Main scenario
 export default function () {
-    const username = generateUser();
-    const password = username; // For simplicity, using the same value for password
-
     group('Registration simulation', function () {
+        const username = generateUser();
+        const password = username; // For simplicity, using the same value for password
         register(username, password);
     });
 }

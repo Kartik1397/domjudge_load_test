@@ -11,7 +11,7 @@ export const options = {
         { duration: '3s', target: 10 },
         { duration: '30s', target: 20 },
         { duration: '1m', target: 40 },
-        { duration: '10m', target: 40 },
+        { duration: '10m', target: 400 },
     ],
     thresholds: {
         http_req_duration: ['p(95)<500'], // 95% of requests should be below 500ms
@@ -146,8 +146,8 @@ export default function () {
         submitSolution('java', java);
         sleep(10);
 
-        http.get(`${BASE_URL}/team/scoreboard`);
-        sleep(10);
+//        http.get(`${BASE_URL}/team/scoreboard`);
+//        sleep(10);
 
         http.get(`${BASE_URL}/team/team/${username}`);
         sleep(5);
@@ -158,7 +158,7 @@ export default function () {
         submitSolution('c', c);
         sleep(15);
 
-        http.get(`${BASE_URL}/team/scoreboard`);
+ //       http.get(`${BASE_URL}/team/scoreboard`);
     });
 }
 
