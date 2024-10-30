@@ -11,5 +11,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/k6": "^0.54.1"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bluebird": "^3.7.2",
+    "cheerio": "^1.0.0",
+    "qs": "^6.13.0"
   }
 }
